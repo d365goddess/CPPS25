@@ -1,0 +1,58 @@
+{
+  '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+  type: "AdaptiveCard",
+  version: "1.5",
+  body: [
+    {
+      type: "TextBlock",
+      text: "Your reservation is confirmed!",
+      wrap: true,
+      size: "Medium",
+      weight: "Bolder",
+      color: "Attention"
+    },
+    {
+      type: "ColumnSet",
+      columns: [
+        {
+          type: "Column",
+          width: "2",
+          items: [
+            {
+              type: "TextBlock",
+              text: "Name: " & (Topic.name),
+              wrap: true,
+              size: "Medium",
+              weight: "Bolder",
+              spacing: "None"
+            },
+            {
+              type: "TextBlock",
+              text: "Number of People " & (Topic.people),
+              wrap: true,
+              spacing: "Small"
+            },
+            {
+              type: "TextBlock",
+              text: "Date: " & (Topic.DateTime),
+              wrap: true,
+              spacing: "Small"
+            }
+          ]
+        },
+        {
+          type: "Column",
+          width: "1",
+          items: [
+            {
+              type: "Image",
+              url: "https://www.rooneysrestaurant.com/wp-content/uploads/2016/08/reservation-img.jpg",
+              size: "Large",
+              horizontalAlignment: "Right"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
