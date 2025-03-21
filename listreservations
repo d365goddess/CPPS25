@@ -1,0 +1,274 @@
+kind: TaskDialog
+modelDisplayName: ListReservations
+modelDescription: The ListReservations should be used when the user needs to view the a current Reservation. This action helps in identifying existing Reservations and ensuring that any updates or changes are made accurately and efficiently. It is essential for maintaining data integrity and avoiding unauthorized access to the Reservations table. Information provided should include the Reservation Number, Name, Email Address, Total Number of People, Room.
+inputs:
+  - kind: ManualTaskInput
+    propertyName: organization
+    value: https://org3943e73d.crm.dynamics.com
+
+  - kind: ManualTaskInput
+    propertyName: entityName
+    value: new_reservations
+
+  - kind: AutomaticTaskInput
+    propertyName: "'$filter'"
+    description: contains(new_name, 'Bob Johnson')
+
+outputs:
+  - propertyName: @odata.nextLink
+    name: Next link
+    description: The url to fetch next page data.
+
+  - propertyName: value
+    name: value
+
+action:
+  kind: InvokeConnectorTaskAction
+  connectionReference: cr42f_restaurantAgent.shared_commondataserviceforapps.shared-commondataser-70a0de9b-b346-4719-a75b-9532b4788e26
+  connectionProperties:
+    mode: Invoker
+    usageDescription: The purpose of this Connector is to accurately display information to the user in response to a question. Any Choice Columns or Complex Lookup columns will always be shown as the Text Descriptor rather than the Option Set Value or GUID. This ensures that users can easily understand the data they have requested.
+
+  operationId: ListRecordsWithOrganization
+  dynamicOutputSchema:
+    kind: Record
+    properties:
+      @odata.nextLink:
+        displayName: Next link
+        description: The url to fetch next page data.
+        visibility: Advanced
+        order: 1
+        type: String
+
+      value:
+        order: 0
+        type:
+          kind: Table
+          properties:
+            _createdby_value:
+              displayName: Created By (Value)
+              description: Unique identifier of the user who created the record.
+              visibility: Advanced
+              order: 3
+              type: String
+
+            _createdby_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+              displayName: Created By (Type)
+              description: Unique identifier of the user who created the record.
+              visibility: Advanced
+              order: 2
+              type: String
+
+            _createdonbehalfby_value:
+              displayName: Created By (Delegate) (Value)
+              description: Unique identifier of the delegate user who created the record.
+              visibility: Advanced
+              order: 1
+              type: String
+
+            _createdonbehalfby_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+              displayName: Created By (Delegate) (Type)
+              description: Unique identifier of the delegate user who created the record.
+              visibility: Advanced
+              order: 0
+              type: String
+
+            _modifiedby_value:
+              displayName: Modified By (Value)
+              description: Unique identifier of the user who modified the record.
+              visibility: Advanced
+              order: 10
+              type: String
+
+            _modifiedby_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+              displayName: Modified By (Type)
+              description: Unique identifier of the user who modified the record.
+              visibility: Advanced
+              order: 9
+              type: String
+
+            _modifiedonbehalfby_value:
+              displayName: Modified By (Delegate) (Value)
+              description: Unique identifier of the delegate user who modified the record.
+              visibility: Advanced
+              order: 8
+              type: String
+
+            _modifiedonbehalfby_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+              displayName: Modified By (Delegate) (Type)
+              description: Unique identifier of the delegate user who modified the record.
+              visibility: Advanced
+              order: 7
+              type: String
+
+            _ownerid_value:
+              displayName: Owner (Value)
+              description: Owner Id
+              visibility: Advanced
+              order: 15
+              type: String
+
+            _ownerid_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+              displayName: Owner (Type)
+              description: Owner Id
+              visibility: Advanced
+              order: 14
+              type: String
+
+            _owningbusinessunit_value:
+              displayName: Owning Business Unit (Value)
+              description: Unique identifier for the business unit that owns the record
+              order: 17
+              type: String
+
+            _owningbusinessunit_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+              displayName: Owning Business Unit (Type)
+              description: Unique identifier for the business unit that owns the record
+              order: 16
+              type: String
+
+            _owningteam_value:
+              displayName: Owning Team (Value)
+              description: Unique identifier for the team that owns the record.
+              visibility: Advanced
+              order: 19
+              type: String
+
+            _owningteam_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+              displayName: Owning Team (Type)
+              description: Unique identifier for the team that owns the record.
+              visibility: Advanced
+              order: 18
+              type: String
+
+            _owninguser_value:
+              displayName: Owning User (Value)
+              description: Unique identifier for the user that owns the record.
+              visibility: Advanced
+              order: 21
+              type: String
+
+            _owninguser_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+              displayName: Owning User (Type)
+              description: Unique identifier for the user that owns the record.
+              visibility: Advanced
+              order: 20
+              type: String
+
+            @odata.id:
+              displayName: OData Id
+              description: OData row id
+              order: 13
+              type: String
+
+            createdon:
+              displayName: Created On
+              description: Date and time when the record was created.
+              visibility: Advanced
+              order: 4
+              type: DateTime
+
+            importsequencenumber:
+              displayName: Import Sequence Number
+              description: Sequence number of the import that created this record.
+              visibility: Advanced
+              order: 6
+              type: Number
+
+            modifiedon:
+              displayName: Modified On
+              description: Date and time when the record was modified.
+              visibility: Advanced
+              order: 11
+              type: DateTime
+
+            new_emailaddress:
+              displayName: Email Address
+              order: 5
+              type: String
+
+            new_name:
+              displayName: Name
+              order: 12
+              type: String
+
+            new_reservationdate:
+              displayName: Reservation Date
+              visibility: Advanced
+              order: 24
+              type: DateTime
+
+            new_reservationid:
+              displayName: Reservation
+              description: Unique identifier for entity instances
+              visibility: Advanced
+              order: 23
+              type: String
+
+            new_reservationnumber:
+              displayName: Reservation Number
+              visibility: Advanced
+              order: 25
+              type: String
+
+            new_room:
+              displayName: Room
+              visibility: Advanced
+              order: 26
+              type: String
+
+            new_totalnumberofpeople:
+              displayName: Total Number of People
+              visibility: Advanced
+              order: 30
+              type: Number
+
+            overriddencreatedon:
+              displayName: Record Created On
+              description: Date and time that the record was migrated.
+              visibility: Advanced
+              order: 22
+              type: DateTime
+
+            statecode:
+              displayName: Status
+              description: Status of the Reservation
+              visibility: Advanced
+              order: 27
+              dynamicValuesConfig:
+                capability: List
+
+              type: Number
+
+            statuscode:
+              displayName: Status Reason
+              description: Reason for the status of the Reservation
+              visibility: Advanced
+              order: 28
+              dynamicValuesConfig:
+                capability: List
+
+              type: Number
+
+            timezoneruleversionnumber:
+              displayName: Time Zone Rule Version Number
+              description: For internal use only.
+              visibility: Advanced
+              order: 29
+              type: Number
+
+            utcconversiontimezonecode:
+              displayName: UTC Conversion Time Zone Code
+              description: Time zone code that was in use when the record was created.
+              visibility: Advanced
+              order: 31
+              type: Number
+
+            versionnumber:
+              displayName: Version Number
+              description: Version Number
+              visibility: Advanced
+              order: 32
+              type: Number
+
+outputMode: Specific

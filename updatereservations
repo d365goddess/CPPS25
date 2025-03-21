@@ -1,0 +1,576 @@
+kind: TaskDialog
+modelDisplayName: Update User Role
+modelDescription: Update User Role
+inputs:
+  - kind: ManualTaskInput
+    propertyName: organization
+    value: https://fvsdef.crm3.dynamics.com
+
+  - kind: ManualTaskInput
+    propertyName: entityName
+    value: fvsd_userroles
+
+  - kind: AutomaticTaskInput
+    propertyName: recordId
+    description: Use the Dataverse "propertyName"  fvsd_userroleid from the selected Record identified by the User.
+
+  - kind: AutomaticTaskInput
+    propertyName: item.'fvsd_role'
+    description: User Role
+    shouldPromptUser: false
+
+  - kind: AutomaticTaskInput
+    propertyName: item.'fvsd_excludefromsync'
+    description: Exclude from Sync Enabled.
+    shouldPromptUser: false
+
+  - kind: AutomaticTaskInput
+    propertyName: item.'fvsd_pocenabled'
+    description: Proof of Concept Enabled.
+    shouldPromptUser: false
+
+  - kind: AutomaticTaskInput
+    propertyName: item.'fvsd_continuumadministrator'
+    description: Continuum Administrator Enabled.
+    shouldPromptUser: false
+
+outputs:
+  - propertyName: _createdby_value
+    name: Created By (Value)
+    description: Unique identifier of the user who created the record.
+
+  - propertyName: _createdby_value@Microsoft.Dynamics.CRM.lookuplogicalname
+    name: Created By (Type)
+    description: Unique identifier of the user who created the record.
+
+  - propertyName: _createdonbehalfby_value
+    name: Created By (Delegate) (Value)
+    description: Unique identifier of the delegate user who created the record.
+
+  - propertyName: _createdonbehalfby_value@Microsoft.Dynamics.CRM.lookuplogicalname
+    name: Created By (Delegate) (Type)
+    description: Unique identifier of the delegate user who created the record.
+
+  - propertyName: _fvsd_assignmentone_value
+    name: Assignment One (Value)
+
+  - propertyName: _fvsd_assignmentone_value@Microsoft.Dynamics.CRM.lookuplogicalname
+    name: Assignment One (Type)
+
+  - propertyName: _fvsd_assignmenttwo_value
+    name: Assignment Two (Value)
+
+  - propertyName: _fvsd_assignmenttwo_value@Microsoft.Dynamics.CRM.lookuplogicalname
+    name: Assignment Two (Type)
+
+  - propertyName: _fvsd_systemuser_value
+    name: System User (Value)
+
+  - propertyName: _fvsd_systemuser_value@Microsoft.Dynamics.CRM.lookuplogicalname
+    name: System User (Type)
+
+  - propertyName: _modifiedby_value
+    name: Modified By (Value)
+    description: Unique identifier of the user who modified the record.
+
+  - propertyName: _modifiedby_value@Microsoft.Dynamics.CRM.lookuplogicalname
+    name: Modified By (Type)
+    description: Unique identifier of the user who modified the record.
+
+  - propertyName: _modifiedonbehalfby_value
+    name: Modified By (Delegate) (Value)
+    description: Unique identifier of the delegate user who modified the record.
+
+  - propertyName: _modifiedonbehalfby_value@Microsoft.Dynamics.CRM.lookuplogicalname
+    name: Modified By (Delegate) (Type)
+    description: Unique identifier of the delegate user who modified the record.
+
+  - propertyName: _ownerid_value
+    name: Owner (Value)
+    description: Owner Id
+
+  - propertyName: _ownerid_value@Microsoft.Dynamics.CRM.lookuplogicalname
+    name: Owner (Type)
+    description: Owner Id
+
+  - propertyName: _owningbusinessunit_value
+    name: Owning Business Unit (Value)
+    description: Unique identifier for the business unit that owns the record
+
+  - propertyName: _owningbusinessunit_value@Microsoft.Dynamics.CRM.lookuplogicalname
+    name: Owning Business Unit (Type)
+    description: Unique identifier for the business unit that owns the record
+
+  - propertyName: _owningteam_value
+    name: Owning Team (Value)
+    description: Unique identifier for the team that owns the record.
+
+  - propertyName: _owningteam_value@Microsoft.Dynamics.CRM.lookuplogicalname
+    name: Owning Team (Type)
+    description: Unique identifier for the team that owns the record.
+
+  - propertyName: _owninguser_value
+    name: Owning User (Value)
+    description: Unique identifier for the user that owns the record.
+
+  - propertyName: _owninguser_value@Microsoft.Dynamics.CRM.lookuplogicalname
+    name: Owning User (Type)
+    description: Unique identifier for the user that owns the record.
+
+  - propertyName: @odata.id
+    name: OData Id
+    description: OData row id
+
+  - propertyName: createdon
+    name: Created On
+    description: Date and time when the record was created.
+
+  - propertyName: fvsd_continuumadministrator
+    name: Continuum Administrator
+
+  - propertyName: fvsd_excludefromsync
+    name: Exclude From Sync
+
+  - propertyName: fvsd_name
+    name: Name
+
+  - propertyName: fvsd_pocenabled
+    name: PoC Enabled
+
+  - propertyName: fvsd_powerappssignin
+    name: PowerApps Sign In
+
+  - propertyName: fvsd_role
+    name: Role
+
+  - propertyName: fvsd_userroleid
+    name: User Role
+    description: Unique identifier for entity instances
+
+  - propertyName: importsequencenumber
+    name: Import Sequence Number
+    description: Sequence number of the import that created this record.
+
+  - propertyName: modifiedon
+    name: Modified On
+    description: Date and time when the record was modified.
+
+  - propertyName: overriddencreatedon
+    name: Record Created On
+    description: Date and time that the record was migrated.
+
+  - propertyName: statecode
+    name: Status
+    description: Status of the User Role
+
+  - propertyName: statuscode
+    name: Status Reason
+    description: Reason for the status of the User Role
+
+  - propertyName: timezoneruleversionnumber
+    name: Time Zone Rule Version Number
+    description: For internal use only.
+
+  - propertyName: utcconversiontimezonecode
+    name: UTC Conversion Time Zone Code
+    description: Time zone code that was in use when the record was created.
+
+  - propertyName: versionnumber
+    name: Version Number
+    description: Version Number
+
+action:
+  kind: InvokeConnectorTaskAction
+  connectionReference: fvsd_manageUserRoles.shared_commondataserviceforapps.shared-commondataser-1f30286b-cf27-4282-a60e-568f0bce4450
+  connectionProperties:
+    mode: Invoker
+
+  operationId: UpdateOnlyRecordWithOrganization
+  dynamicInputSchema:
+    properties:
+      entityName:
+        displayName: Table name
+        description: Choose a table
+        isRequired: true
+        order: 1
+        dynamicValuesConfig:
+          capability: List
+
+        type: String
+
+      item:
+        displayName: Row Item
+        description: Row to update
+        isRequired: true
+        order: 3
+        type:
+          kind: Record
+          properties:
+            fvsd_assignmentone@odata.bind:
+              displayName: Assignment One (Business Units)
+              order: 0
+              type: String
+
+            fvsd_assignmenttwo@odata.bind:
+              displayName: Assignment Two (Business Units)
+              visibility: Advanced
+              order: 1
+              type: String
+
+            fvsd_continuumadministrator:
+              displayName: Continuum Administrator
+              order: 2
+              type: Boolean
+
+            fvsd_excludefromsync:
+              displayName: Exclude From Sync
+              order: 3
+              type: Boolean
+
+            fvsd_name:
+              displayName: Name
+              order: 4
+              type: String
+
+            fvsd_pocenabled:
+              displayName: PoC Enabled
+              order: 6
+              type: Boolean
+
+            fvsd_powerappssignin:
+              displayName: PowerApps Sign In
+              order: 7
+              type: String
+
+            fvsd_role:
+              displayName: Role
+              order: 8
+              dynamicValuesConfig:
+                capability: List
+
+              type: Number
+
+            fvsd_systemuser@odata.bind:
+              displayName: System User (Users)
+              order: 11
+              type: String
+
+            ownerid@odata.bind:
+              displayName: Owner (Owners)
+              description: Owner Id
+              visibility: Advanced
+              order: 5
+              type: String
+
+            statecode:
+              displayName: Status
+              description: Status of the User Role
+              visibility: Advanced
+              order: 9
+              dynamicValuesConfig:
+                capability: List
+
+              type: Number
+
+            statuscode:
+              displayName: Status Reason
+              description: Reason for the status of the User Role
+              visibility: Advanced
+              order: 10
+              dynamicValuesConfig:
+                capability: List
+
+              type: Number
+
+            timezoneruleversionnumber:
+              displayName: Time Zone Rule Version Number
+              description: For internal use only.
+              visibility: Advanced
+              order: 12
+              type: Number
+
+            utcconversiontimezonecode:
+              displayName: UTC Conversion Time Zone Code
+              description: Time zone code that was in use when the record was created.
+              visibility: Advanced
+              order: 13
+              type: Number
+
+      organization:
+        displayName: Environment
+        description: Choose an environment
+        isRequired: true
+        order: 0
+        dynamicValuesConfig:
+          capability: List
+
+        type: String
+
+      recordId:
+        displayName: Row ID
+        description: Enter the row's globally unique identifier (GUID)
+        isRequired: true
+        order: 2
+        type: String
+
+  dynamicOutputSchema:
+    kind: Record
+    properties:
+      _createdby_value:
+        displayName: Created By (Value)
+        description: Unique identifier of the user who created the record.
+        visibility: Advanced
+        order: 8
+        type: String
+
+      _createdby_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+        displayName: Created By (Type)
+        description: Unique identifier of the user who created the record.
+        visibility: Advanced
+        order: 7
+        type: String
+
+      _createdonbehalfby_value:
+        displayName: Created By (Delegate) (Value)
+        description: Unique identifier of the delegate user who created the record.
+        visibility: Advanced
+        order: 6
+        type: String
+
+      _createdonbehalfby_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+        displayName: Created By (Delegate) (Type)
+        description: Unique identifier of the delegate user who created the record.
+        visibility: Advanced
+        order: 5
+        type: String
+
+      _fvsd_assignmentone_value:
+        displayName: Assignment One (Value)
+        order: 1
+        type: String
+
+      _fvsd_assignmentone_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+        displayName: Assignment One (Type)
+        order: 0
+        type: String
+
+      _fvsd_assignmenttwo_value:
+        displayName: Assignment Two (Value)
+        visibility: Advanced
+        order: 3
+        type: String
+
+      _fvsd_assignmenttwo_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+        displayName: Assignment Two (Type)
+        visibility: Advanced
+        order: 2
+        type: String
+
+      _fvsd_systemuser_value:
+        displayName: System User (Value)
+        order: 34
+        type: String
+
+      _fvsd_systemuser_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+        displayName: System User (Type)
+        order: 33
+        type: String
+
+      _modifiedby_value:
+        displayName: Modified By (Value)
+        description: Unique identifier of the user who modified the record.
+        visibility: Advanced
+        order: 15
+        type: String
+
+      _modifiedby_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+        displayName: Modified By (Type)
+        description: Unique identifier of the user who modified the record.
+        visibility: Advanced
+        order: 14
+        type: String
+
+      _modifiedonbehalfby_value:
+        displayName: Modified By (Delegate) (Value)
+        description: Unique identifier of the delegate user who modified the record.
+        visibility: Advanced
+        order: 13
+        type: String
+
+      _modifiedonbehalfby_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+        displayName: Modified By (Delegate) (Type)
+        description: Unique identifier of the delegate user who modified the record.
+        visibility: Advanced
+        order: 12
+        type: String
+
+      _ownerid_value:
+        displayName: Owner (Value)
+        description: Owner Id
+        visibility: Advanced
+        order: 20
+        type: String
+
+      _ownerid_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+        displayName: Owner (Type)
+        description: Owner Id
+        visibility: Advanced
+        order: 19
+        type: String
+
+      _owningbusinessunit_value:
+        displayName: Owning Business Unit (Value)
+        description: Unique identifier for the business unit that owns the record
+        order: 22
+        type: String
+
+      _owningbusinessunit_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+        displayName: Owning Business Unit (Type)
+        description: Unique identifier for the business unit that owns the record
+        order: 21
+        type: String
+
+      _owningteam_value:
+        displayName: Owning Team (Value)
+        description: Unique identifier for the team that owns the record.
+        visibility: Advanced
+        order: 24
+        type: String
+
+      _owningteam_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+        displayName: Owning Team (Type)
+        description: Unique identifier for the team that owns the record.
+        visibility: Advanced
+        order: 23
+        type: String
+
+      _owninguser_value:
+        displayName: Owning User (Value)
+        description: Unique identifier for the user that owns the record.
+        visibility: Advanced
+        order: 26
+        type: String
+
+      _owninguser_value@Microsoft.Dynamics.CRM.lookuplogicalname:
+        displayName: Owning User (Type)
+        description: Unique identifier for the user that owns the record.
+        visibility: Advanced
+        order: 25
+        type: String
+
+      @odata.id:
+        displayName: OData Id
+        description: OData row id
+        order: 18
+        type: String
+
+      createdon:
+        displayName: Created On
+        description: Date and time when the record was created.
+        visibility: Advanced
+        order: 9
+        type: DateTime
+
+      fvsd_continuumadministrator:
+        displayName: Continuum Administrator
+        order: 4
+        type: Boolean
+
+      fvsd_excludefromsync:
+        displayName: Exclude From Sync
+        order: 10
+        type: Boolean
+
+      fvsd_name:
+        displayName: Name
+        order: 17
+        type: String
+
+      fvsd_pocenabled:
+        displayName: PoC Enabled
+        order: 27
+        type: Boolean
+
+      fvsd_powerappssignin:
+        displayName: PowerApps Sign In
+        order: 28
+        type: String
+
+      fvsd_role:
+        displayName: Role
+        order: 30
+        dynamicValuesConfig:
+          capability: List
+
+        type: Number
+
+      fvsd_userroleid:
+        displayName: User Role
+        description: Unique identifier for entity instances
+        visibility: Advanced
+        order: 36
+        type: String
+
+      importsequencenumber:
+        displayName: Import Sequence Number
+        description: Sequence number of the import that created this record.
+        visibility: Advanced
+        order: 11
+        type: Number
+
+      modifiedon:
+        displayName: Modified On
+        description: Date and time when the record was modified.
+        visibility: Advanced
+        order: 16
+        type: DateTime
+
+      overriddencreatedon:
+        displayName: Record Created On
+        description: Date and time that the record was migrated.
+        visibility: Advanced
+        order: 29
+        type: DateTime
+
+      statecode:
+        displayName: Status
+        description: Status of the User Role
+        visibility: Advanced
+        order: 31
+        dynamicValuesConfig:
+          capability: List
+
+        type: Number
+
+      statuscode:
+        displayName: Status Reason
+        description: Reason for the status of the User Role
+        visibility: Advanced
+        order: 32
+        dynamicValuesConfig:
+          capability: List
+
+        type: Number
+
+      timezoneruleversionnumber:
+        displayName: Time Zone Rule Version Number
+        description: For internal use only.
+        visibility: Advanced
+        order: 35
+        type: Number
+
+      utcconversiontimezonecode:
+        displayName: UTC Conversion Time Zone Code
+        description: Time zone code that was in use when the record was created.
+        visibility: Advanced
+        order: 37
+        type: Number
+
+      versionnumber:
+        displayName: Version Number
+        description: Version Number
+        visibility: Advanced
+        order: 38
+        type: Number
+
+outputMode: Specific
